@@ -103,7 +103,7 @@ class TimeZoneField(models.Field):
         if self.choices_display is not None:
             kwargs["choices_display"] = self.choices_display
 
-        choices = kwargs["choices"]
+        choices = kwargs.get("choices", [])
         if self.choices_display is None:
             if choices == standard(self.default_tzs):
                 kwargs.pop("choices")
